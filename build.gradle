@@ -1,0 +1,18 @@
+plugins {
+    id 'application'
+}
+
+group 'com.deadfyre.com'
+version '0.1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.javacord:javacord:3.0.1'
+}
+
+mainClassName = 'com.deadfyre.fyrebot.Main'
