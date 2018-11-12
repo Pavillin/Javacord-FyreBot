@@ -1,8 +1,11 @@
 package com.deadfyre.fyrebot;
 
-import com.deadfyre.fyrebot.commands.PingPongCommand;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.javacord.api.util.logging.FallbackLoggerConfiguration;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
+import com.deadfyre.fyrebot.commands.PingPongCommand;
 
 public class Main {
 
@@ -11,6 +14,9 @@ public class Main {
             System.err.println("Please provide a valid token as the first argument!");
             return;
         }
+        // Enable debugging, if no slf4j logger was found
+        FallbackLoggerConfiguration.setDebug(true);
+
         //The token is the first argument of the program
         String token = args[0];
 
