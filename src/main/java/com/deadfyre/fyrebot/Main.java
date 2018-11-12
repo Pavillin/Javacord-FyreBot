@@ -9,12 +9,14 @@ import com.deadfyre.fyrebot.commands.PingPongCommand;
 
 public class Main {
 
+    private static Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.err.println("Please provide a valid token as the first argument!");
             return;
         }
-        // Enable debugging, if no slf4j logger was found
+        //Enable debugging, if no slf4j logger was found
         FallbackLoggerConfiguration.setDebug(true);
 
         //The token is the first argument of the program
@@ -26,8 +28,12 @@ public class Main {
         //Add listeners for commands
         api.addMessageCreateListener(new PingPongCommand());
 
-        //Print the invite url of bot
-        System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
+        //Log the bot invite url
+        logger.info("You can invite me by using the following url: " + api.createBotInvite());
+
+        //Log a message, if the bot joined or left a server
+        api.addServerJoinListener(event -> logger.info("Joined server " + event.getServer().getName()));
+        api.addServerLeaveListener(event -> logger.info("Left server " + event.getServer().getName()));
     }
 
 }
