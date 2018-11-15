@@ -2,9 +2,12 @@ package com.deadfyre.fyrebot;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.util.logging.FallbackLoggerConfiguration;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
+import java.awt.*;
+//Import commands
 import com.deadfyre.fyrebot.commands.PingPongCommand;
 
 public class Main {
@@ -19,10 +22,10 @@ public class Main {
         //Enable debugging, if no slf4j logger was found
         FallbackLoggerConfiguration.setDebug(true);
 
-        //The token is the first argument of the program
+        //Store the token (the first argument of the program)
         String token = args[0];
 
-        //Login
+        //Login to Discord
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
         //Add listeners for commands
@@ -31,9 +34,28 @@ public class Main {
         //Log the bot invite url
         logger.info("You can invite me by using the following url: " + api.createBotInvite());
 
-        //Log a message, if the bot joined or left a server
-        api.addServerJoinListener(event -> logger.info("Joined server " + event.getServer().getName()));
+        //Log when bot joins a server and send a DM to server owner
+        api.addServerJoinListener(event -> {
+            logger.info("Joined server " + event.getServer().getName());
+            event.getServer().getOwner().sendMessage(JoinDM());
+        });
+
+        //Log a message when the bot leaves a server
         api.addServerLeaveListener(event -> logger.info("Left server " + event.getServer().getName()));
+    }
+
+    /**
+     * This method returns the Direct Message (DM) that will be sent to the owner of the server the bot connects to
+     * @return
+     */
+    private static EmbedBuilder JoinDM (){
+        return new EmbedBuilder()
+                .setColor(Color.ORANGE)
+                .setTitle("FyreBot")
+                .setDescription("Hey, I'm FyreBot! Thanks for inviting me to your server!\n\n" +
+                                "My prefix is `!` for example `!help`\n\n" +
+                                "To get started use `!help` to list all my commands!\n\n" +
+                                "I'm developed by Drix#8197 so if you have any questions about me you should ask him.");
     }
 
 }
