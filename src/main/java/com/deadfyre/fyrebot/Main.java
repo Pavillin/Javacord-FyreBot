@@ -55,7 +55,7 @@ public class Main {
                 .setDescription("Hey, I'm FyreBot! Thanks for inviting me to your server!\n\n" +
                                 "My prefix is `!` for example `!help`\n\n" +
                                 "To get started use `!help` to list all my commands!\n\n" +
-                                "I'm developed by Drix#8197 so if you have any questions about me you should ask him.");
+                                "I'm developed by `Drix#8197` so if you have any questions about me you should ask him.");
     }
 
 }
