@@ -61,8 +61,9 @@ public class Main {
      * @return
      */
     private static EmbedBuilder JoinDM (){
+        Color color = new Color(238,119,0);
         return new EmbedBuilder()
-                .setColor(Color.ORANGE)
+                .setColor(color)
                 .setTitle("FyreBot")
                 .setDescription("Hey, I'm FyreBot! Thanks for inviting me to your server!\n\n" +
                                 "My prefix is `!` for example `!command`\n\n" +
