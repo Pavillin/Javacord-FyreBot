@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.javacord:javacord:3.0.1'
+    implementation 'org.javacord:javacord:3.0.3'
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
     runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version:'2.11.1'
 }
