@@ -50,6 +50,7 @@ public class WelcomeCommand implements Command{
                         .append("Links", MessageDecoration.UNDERLINE, MessageDecoration.BOLD)
                         .appendNewLine()
                         .append("Website: https://deadfyre.com/")
+                        .appendNewLine()
                         .append("Discord: https://discord.gg/uaxgEhu")
                         .send(event.getApi().getTextChannelById(channelid).get());
                 new MessageBuilder()
