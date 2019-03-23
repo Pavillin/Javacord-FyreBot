@@ -1,8 +1,9 @@
 package com.deadfyre.fyrebot.listeners;
 
 import java.util.HashMap;
-import java.util.List;
 
+import com.deadfyre.fyrebot.commands.ImageTest;
+import com.deadfyre.fyrebot.commands.WelcomeCommand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.event.message.MessageCreateEvent;
@@ -17,6 +18,8 @@ public class CommandHandler implements MessageCreateListener {
 
     public CommandHandler() {
         commands.put("ping", new PingPongCommand());
+        commands.put("img", new ImageTest());
+        commands.put("welcome", new WelcomeCommand());
     }
 
     @Override
